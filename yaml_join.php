@@ -3,8 +3,8 @@
 <?php
 if (isset($argv[1])) {
   $joined_file = file_get_contents($argv[1]);
-  $kabumm = explode("# &Ł@", $joined_file);
-  foreach($kabumm as $file_content) {
+  $kaboom = explode("# &Ł@", $joined_file);
+  foreach($kaboom as $file_content) {
     if (!empty($file_content)) {
       $filename = substr($file_content, 0, strpos($file_content, "\n"));
       file_put_contents($filename . ".new", substr($file_content, strpos($file_content, "\n") + 1));
@@ -24,8 +24,8 @@ else {
 
 function is_yaml_file($string) {
   if (is_file($string)) {
-    $bumm = explode(".", $string);
-    $extension = $bumm[count($bumm) - 1];
+    $kaboom = explode(".", $string);
+    $extension = $kaboom[count($kaboom) - 1];
     if ($extension == "yaml" || $extension == "yml") {
       return TRUE;
     }

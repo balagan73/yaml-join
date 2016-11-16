@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 
 <?php
-if (isset($argv)) {
+if (isset($argv[1])) {
   $joined_file = file_get_contents($argv[1]);
   $kabumm = explode("# &Ł@", $joined_file);
   foreach($kabumm as $file_content) {

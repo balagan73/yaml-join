@@ -5,7 +5,6 @@ if (isset($argv[1])) {
   $joined_file = file_get_contents($argv[1]);
   $kabumm = explode("# &Ł@", $joined_file);
   foreach($kabumm as $file_content) {
-    var_dump($kabumm);
     if (!empty($file_content)) {
       $filename = substr($file_content, 0, strpos($file_content, "\n"));
       file_put_contents($filename . ".new", substr($file_content, strpos($file_content, "\n") + 1));

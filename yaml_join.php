@@ -19,7 +19,9 @@ else {
     $joined_file .= "# &Ł@" . $file . "\n";
     $joined_file .= file_get_contents($file);
   }
-  file_put_contents("joined_yaml.yml", $joined_file);
+  if (!empty($joined_file)) {
+    file_put_contents("joined_yaml.yml", $joined_file);
+  }
 }
 
 function is_yaml_file($string) {

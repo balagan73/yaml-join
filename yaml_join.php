@@ -3,6 +3,14 @@
 <?php
 if (isset($argv[1])) {
   $joined_file = file_get_contents($argv[1]);
+  if ($argv[1] == "--help") {
+    $help = "\nIf run without an argument, it joins all the yaml files\n" .
+      "in the directory of the script.\n" .
+      "If the name of the file that contains the joined yaml files\n" .
+      "is passed as an argument, it will split it up into the original\n" .
+      "files and adds a .new extension.\n\n";
+    echo($help);
+  }
   $kaboom = explode("# &Ł@", $joined_file);
   foreach($kaboom as $file_content) {
     if (!empty($file_content)) {

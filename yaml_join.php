@@ -2,7 +2,6 @@
 
 <?php
 if (isset($argv[1])) {
-  $joined_file = file_get_contents($argv[1]);
   if ($argv[1] == "--help") {
     $help = "\nIf run without an argument, it joins all the yaml files\n" .
       "in the directory of the script.\n" .
@@ -10,12 +9,17 @@ if (isset($argv[1])) {
       "is passed as an argument, it will split it up into the original\n" .
       "files and adds a .new extension.\n\n";
     echo($help);
+    exit();
   }
-  $kaboom = explode("# &Ł@", $joined_file);
-  foreach($kaboom as $file_content) {
-    if (!empty($file_content)) {
-      $filename = substr($file_content, 0, strpos($file_content, "\n"));
-      file_put_contents($filename . ".new", substr($file_content, strpos($file_content, "\n") + 1));
+  else {
+    if ($joined_file = file_get_contents($argv[1])) {
+      $kaboom = explode("# &Ł@", $joined_file);
+      foreach($kaboom as $file_content) {
+        if (!empty($file_content)) {
+          $filename = substr($file_content, 0, strpos($file_content, "\n"));
+          file_put_contents($filename . ".new", substr($file_content, strpos($file_content, "\n") + 1));
+        }
+      }
     }
   }
 }
